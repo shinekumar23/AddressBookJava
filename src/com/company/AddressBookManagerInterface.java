@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public interface AddressBookManagerInterface {
 
-    public void newAddressBook();
+    public void newAddressBook(String filename) throws IOException;
 
     public void openAddressBook();
 
