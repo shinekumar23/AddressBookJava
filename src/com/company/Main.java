@@ -70,7 +70,7 @@ public class Main {
                                     addressBookImplementation.sortByZip(openedfile);
                                     break;
                                 case 6:
-                                    addressBookImplementation.sortByName();
+                                    addressBookImplementation.sortByName(openedfile);
                                     break;
                                 case 7:
                                     addressBookImplementation.display(openedfile);

@@ -7,6 +7,8 @@ import java.util.Scanner;
 import java.util.TreeMap;
 
 public class AddressBookImplementation extends Person implements AddressBookInterface {
+    ArrayList<Person> people = new ArrayList<>();
+
     @Override
     public void addPerson(File openedfile) throws IOException {
         Person person = new Person(firstname, lastname, city, state, zipcode, phonenumber);
@@ -189,7 +191,24 @@ public class AddressBookImplementation extends Person implements AddressBookInte
     }
 
     @Override
-    public void sortByName() {
+    public void sortByName(File openedfile) throws IOException {
+        people = sortByZip(openedfile);
+        Map<String, Person> map = new TreeMap<>();
+
+        int i = 0;
+        for (Person person : people) {
+            String key = person.getFirstname();
+            if (map.containsKey(key)) {
+                key = key + "" + i;
+                i++;
+            }
+            map.put(key, person);
+        }
+        System.out.println("\n***** Records Sorted by First Name *****\nFirst Name,Last Name,Phone Number,City,State,Zip");
+        for (Person person : map.values()) {
+            System.out.print(person.toString() + "\n");
+        }
+
 
     }
 

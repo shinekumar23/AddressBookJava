@@ -11,6 +11,6 @@ public interface AddressBookInterface {
     public String deletePerson(String phon,File openedfile) throws IOException;
     public String searchPerson(String phone,File openedfile) throws FileNotFoundException;
     public ArrayList<Person> sortByZip(File openedfile) throws IOException;
-    public void sortByName();
+    public void sortByName(File openedfile) throws IOException;
     public void display(File openedfile) throws FileNotFoundException;
 }
