@@ -39,6 +39,12 @@ public class Main {
                                 case 1:
                                     addressBookImplementation.addPerson(openedfile);
                                     break;
+                                case 4:
+                                    sc.nextLine();
+                                    System.out.println("Enter the phone");
+                                    String phone = sc.nextLine();
+                                    addressBookImplementation.searchPerson(phone, openedfile);
+                                    break;
                                 default:
                                     System.out.println("Other Options are not implemented");
                                     break;

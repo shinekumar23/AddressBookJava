@@ -1,9 +1,6 @@
 package com.company;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class AddressBookImplementation extends Person implements AddressBookInterface {
@@ -42,8 +39,22 @@ public class AddressBookImplementation extends Person implements AddressBookInte
 
     }
 
-    @Override
-    public void searchPerson() {
+    public String searchPerson(String phone, File openedfile) throws FileNotFoundException {
+        Scanner viewfile=new Scanner(openedfile);
+        String templine="Contact not found";
+        String line="";
+        while (viewfile.hasNextLine()){
+            line=viewfile.nextLine();
+            String[] Contact=line.split(",");
+            if(Contact[5].equals(phone)){
+                System.out.println("Contact found\n"+line);
+                templine=line;
+            }
+        }
+        if (templine == "Contact not found"){
+            System.out.println(templine);
+        }
+        return templine;
 
     }
 
