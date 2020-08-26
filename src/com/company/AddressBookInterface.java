@@ -11,5 +11,5 @@ public interface AddressBookInterface {
     public String searchPerson(String phone,File openedfile) throws FileNotFoundException;
     public void sortByZip();
     public void sortByName();
-    public void display();
+    public void display(File openedfile) throws FileNotFoundException;
 }

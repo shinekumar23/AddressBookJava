@@ -158,7 +158,13 @@ public class AddressBookImplementation extends Person implements AddressBookInte
     }
 
     @Override
-    public void display() {
+    public void display(File openedfile) throws FileNotFoundException {
+        Scanner viewfile=new Scanner(openedfile);
+
+        while (viewfile.hasNextLine()){
+            System.out.println(viewfile.nextLine());
+        }
+    }
 
     }
-}
+

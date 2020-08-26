@@ -73,7 +73,7 @@ public class Main {
                                     addressBookImplementation.sortByName();
                                     break;
                                 case 7:
-                                    addressBookImplementation.display();
+                                    addressBookImplementation.display(openedfile);
                                     break;
                                 case 8:
                                     i = 0;
