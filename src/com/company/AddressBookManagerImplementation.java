@@ -55,7 +55,13 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
     }
 
     @Override
-    public void saveAsAddressBook() {
+    public void saveAsAddressBook(String newname, File openedfile) {
+        File newNamee=new File(newname);
+        if (openedfile.renameTo(newNamee)){
+            System.out.println("Renamed Success fully");
+        }else{
+            System.out.println("Some kind of error occured");
+        }
 
     }
 

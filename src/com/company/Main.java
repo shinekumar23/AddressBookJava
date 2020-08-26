@@ -88,7 +88,9 @@ public class Main {
                     managerImplementation.saveAddressBook();
                     break;
                 case 4:
-                    managerImplementation.saveAsAddressBook();
+                    System.out.println("Enter new Name of file");
+                    String newname=f.nextLine();
+                    managerImplementation.saveAsAddressBook(newname,openedfile);
                     break;
                 case 5:
                     openedfile=null;

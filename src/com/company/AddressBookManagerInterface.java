@@ -11,6 +11,6 @@ public interface AddressBookManagerInterface {
 
     public void saveAddressBook();
 
-    public void saveAsAddressBook();
+    public void saveAsAddressBook(String newname, File openedfile);
 
 }
