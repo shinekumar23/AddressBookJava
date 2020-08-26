@@ -35,7 +35,42 @@ public class AddressBookImplementation extends Person implements AddressBookInte
     }
 
     @Override
-    public void deletePerson() {
+    public String deletePerson(String phon,File openedfile) throws IOException {
+        File tempFile = new File("TempFile.csv");
+
+        BufferedReader reader = new BufferedReader(new FileReader(openedfile));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+        String templine=searchPerson(phon,openedfile);
+        if (!templine.equals("Contact not found")) {
+
+            String currentLine;
+
+            while ((currentLine = reader.readLine()) != null) {
+                String trimmedLine = currentLine.trim();
+                if (trimmedLine.equals(templine)) continue;
+                writer.write(currentLine + System.getProperty("line.separator"));
+            }
+            writer.close();
+            reader.close();
+
+            FileInputStream instream = null;
+            FileOutputStream outstream = null;
+
+            instream = new FileInputStream(tempFile);
+            outstream = new FileOutputStream(openedfile);
+
+            byte[] buffer = new byte[1024];
+
+            int length;
+            while ((length = instream.read(buffer)) > 0) {
+                outstream.write(buffer, 0, length);
+            }
+            System.out.println("This adddress shown below is deleted successsfully\n"+templine);
+            instream.close();
+            outstream.close();
+            tempFile.delete();
+        }
+        return templine;
 
     }
 

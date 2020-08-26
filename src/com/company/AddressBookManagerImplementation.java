@@ -8,7 +8,7 @@ import java.util.Objects;
 public class AddressBookManagerImplementation implements AddressBookManagerInterface {
     @Override
     public void newAddressBook(String filename) throws IOException {
-        String CSV_HEADER = "First Name,Last Name,Phone Number,City,State,Zip\n";
+        String CSV_HEADER = "First Name,Last Name,City,State,Zip,Phone Number\n";
         File newfile = new File(filename+".csv");
         boolean result = newfile.createNewFile();
         FileWriter newFile = new FileWriter(newfile);
