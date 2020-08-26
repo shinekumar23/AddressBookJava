@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public interface AddressBookInterface {
-    public void addPerson();
+    public void addPerson(File openedfile) throws IOException;
     public  void editPerson();
     public void deletePerson();
     public void searchPerson();

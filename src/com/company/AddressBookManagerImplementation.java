@@ -3,6 +3,7 @@ package com.company;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Objects;
 
 public class AddressBookManagerImplementation implements AddressBookManagerInterface {
     @Override
@@ -22,9 +23,31 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
     }
 
     @Override
-    public void openAddressBook() {
+    public File openAddressBook(String openfile) {
+        File file = new File(openfile);
+        boolean check = file.exists();
+        if (check) {
+            System.out.print("Address Book "+openfile + " is Opened \n");
+        } else {
+            System.out.print("No such file exists !!!");
+            file = null;
+        }
+        return file;
 
     }
+
+    public void showFiles() {
+        File folder = new File("/home/shine/IdeaProjects/AddressBookJava");
+        File file[] = folder.listFiles();
+        System.out.println("List of CSV Files");
+        for (File print : Objects.requireNonNull(file)) {
+            String name = print.getName();
+            if (name.contains(".csv")) {
+                System.out.println(name);
+            }
+        }
+    }
+
 
     @Override
     public void saveAddressBook() {

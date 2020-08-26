@@ -7,7 +7,7 @@ public interface AddressBookManagerInterface {
 
     public void newAddressBook(String filename) throws IOException;
 
-    public void openAddressBook();
+    public File openAddressBook(String openfile);
 
     public void saveAddressBook();
 
