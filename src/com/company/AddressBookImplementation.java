@@ -30,7 +30,61 @@ public class AddressBookImplementation extends Person implements AddressBookInte
     }
 
     @Override
-    public void editPerson() {
+    public void editPerson(String phonen,File openedfile) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(openedfile, true));
+        String lineToRemove = deletePerson(phonen, openedfile);
+
+        if (!lineToRemove.equals("Contact not found")){
+            String[] contactData = lineToRemove.split(",");
+
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Edit First Name: Enter First Name or type 'S' to keep as it is");
+            String ans = scanner.nextLine();
+            if (ans.equals("S")){
+                firstname = contactData[0];
+                lastname=contactData[1];
+            }else{
+                firstname = ans;
+                System.out.println("Enter last name");
+                ans=scanner.nextLine();
+                lastname=ans;
+
+            }
+            System.out.println("Edit City: Enter City or type 'S' to keep as it is");
+            ans=scanner.nextLine();
+            if (ans.equals("S")){
+                city=contactData[2];
+            }else {
+                city=ans;
+            }
+            System.out.println("Edit State. Enter State or 'S' to keep State as it is");
+            ans = scanner.nextLine();
+            if (ans.equals("S")){
+                state = contactData[3];
+            }else{
+                state = ans;
+            }
+            System.out.println("Edit zipcode. Enter a new zipcode or 'S' to keep address as it is");
+            ans = scanner.nextLine();
+            if (ans.equals("S")){
+                zipcode = contactData[4];
+            }else{
+                zipcode = ans;
+            }
+            System.out.println("Edit phone number: Enter a new phone number or type 'S' to keep as it is");
+            ans=scanner.nextLine();
+            if (ans.equals("S")){
+                phonenumber=contactData[5];
+            }else{
+                phonenumber=ans;
+            }
+
+            writer.append(firstname);writer.append(",");writer.append(lastname);writer.append(",");writer.append(city);
+            writer.append(",");writer.append(state);writer.append(",");writer.append(zipcode);writer.append(",");
+            writer.append(phonenumber);writer.append("\n");
+            writer.close();
+        }
 
     }
 

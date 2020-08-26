@@ -48,7 +48,10 @@ public class Main {
                                     addressBookImplementation.addPerson(openedfile);
                                     break;
                                 case 2:
-                                    addressBookImplementation.editPerson();
+                                    sc.nextLine();
+                                    System.out.println("Enter the phone number to edit details");
+                                    String phonen = sc.nextLine();
+                                    addressBookImplementation.editPerson(phonen,openedfile);
                                     break;
                                 case 3:
                                     sc.nextLine();
