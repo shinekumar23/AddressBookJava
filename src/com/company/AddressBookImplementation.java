@@ -1,7 +1,10 @@
 package com.company;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class AddressBookImplementation extends Person implements AddressBookInterface {
     @Override
@@ -148,7 +151,40 @@ public class AddressBookImplementation extends Person implements AddressBookInte
     }
 
     @Override
-    public void sortByZip() {
+    public ArrayList<Person> sortByZip(File openedfile) throws IOException {
+        ArrayList<Person> ListOfPeople;
+        BufferedReader br = new BufferedReader(new FileReader(openedfile));
+        ListOfPeople = new ArrayList<>();
+
+        String line = br.readLine();
+        while ((line = br.readLine()) != null) {
+            if (line == "First Name,Last Name,Phone Number,City,State,Zip")
+                continue;
+            Person p = new Person();
+            p.setFirstname(line.split(",")[0]);
+            p.setLastname(line.split(",")[1]);
+            p.setCity(line.split(",")[2]);
+            p.setState(line.split(",")[3]);
+            p.setZipcode(line.split(",")[4]);
+            p.setPhonenumber(line.split(",")[5]);
+            ListOfPeople.add(p);
+        }
+
+        Map<String, Person> map = new TreeMap<>();
+        int i = 1;
+        for (Person p : ListOfPeople) {
+            String key = p.getZipcode();
+            if (map.containsKey(key)) {
+                key = key + i;
+                i++;
+            }
+            map.put(key, p);
+        }
+        System.out.println("***** Records Sorted by Zip *****\nFirst Name,Last Name,Phone Number,City,State,Zip");
+        for (Person person : map.values()) {
+            System.out.print(person.toString() + "\n");
+        }
+        return ListOfPeople;
 
     }
 

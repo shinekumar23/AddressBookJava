@@ -67,7 +67,7 @@ public class Main {
                                     addressBookImplementation.searchPerson(phone, openedfile);
                                     break;
                                 case 5:
-                                    addressBookImplementation.sortByZip();
+                                    addressBookImplementation.sortByZip(openedfile);
                                     break;
                                 case 6:
                                     addressBookImplementation.sortByName();
