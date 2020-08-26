@@ -13,7 +13,4 @@ public interface AddressBookManagerInterface {
 
     public void saveAsAddressBook();
 
-    public void closeAddressBook();
-
-    public void quit();
 }

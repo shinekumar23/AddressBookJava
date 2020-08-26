@@ -91,7 +91,7 @@ public class Main {
                     managerImplementation.saveAsAddressBook();
                     break;
                 case 5:
-                    managerImplementation.closeAddressBook();
+                    openedfile=null;
                     break;
                 case 6:
                     System.out.println("Exiting Address Book...");

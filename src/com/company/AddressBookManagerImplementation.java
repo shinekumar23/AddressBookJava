@@ -59,13 +59,4 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
 
     }
 
-    @Override
-    public void closeAddressBook() {
-
-    }
-
-    @Override
-    public void quit() {
-
-    }
 }
