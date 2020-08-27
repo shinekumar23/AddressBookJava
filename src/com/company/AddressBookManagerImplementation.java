@@ -22,20 +22,8 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
 
     }
 
+    //Note: showFiles(Change '/home/shine/IdeaProjects/AddressBookJava' this Directory where your project files are there
     @Override
-    public File openAddressBook(String openfile) {
-        File file = new File(openfile);
-        boolean check = file.exists();
-        if (check) {
-            System.out.print("Address Book "+openfile + " is Opened \n");
-        } else {
-            System.out.print("No such file exists !!!");
-            file = null;
-        }
-        return file;
-
-    }
-
     public void showFiles() {
         File folder = new File("/home/shine/IdeaProjects/AddressBookJava");
         File file[] = folder.listFiles();
@@ -50,7 +38,16 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
 
 
     @Override
-    public void saveAddressBook() {
+    public File openAddressBook(String openfile) {
+        File file = new File(openfile);
+        boolean check = file.exists();
+        if (check) {
+            System.out.print("Address Book "+openfile + " is Opened \nSelect Option 2 for Updating and Sorting AddressBook\n");
+        } else {
+            System.out.print("No such file exists !!!");
+            file = null;
+        }
+        return file;
 
     }
 

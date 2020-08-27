@@ -9,7 +9,7 @@ public interface AddressBookManagerInterface {
 
     public File openAddressBook(String openfile);
 
-    public void saveAddressBook();
+    public void showFiles();
 
     public void saveAsAddressBook(String newname, File openedfile);
 
