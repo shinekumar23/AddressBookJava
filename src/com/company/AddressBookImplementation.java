@@ -23,16 +23,36 @@ public class AddressBookImplementation extends Person implements AddressBookInte
         state = in.nextLine();
         System.out.println("Enter Zipcode: ");
         zipcode = in.nextLine();
+        String phoneverify = "";
+        Scanner viewfile = new Scanner(openedfile);
+        String line = "";
         System.out.println("Enter Phone: ");
-        phonenumber = in.nextLine();
-        BufferedWriter writer = new BufferedWriter(new FileWriter(openedfile, true));
-        writer.append(firstname);writer.append(",");writer.append(lastname);writer.append(",");writer.append(city);
-        writer.append(",");writer.append(state);writer.append(",");writer.append(zipcode);writer.append(",");
-        writer.append(phonenumber);writer.append("\n");
-        writer.close();
-        System.out.println("The user details are entered");
+        phoneverify = in.nextLine();
+        while (viewfile.hasNextLine()) {
+            line = viewfile.nextLine();
+            String[] Contact = line.split(",");
+            if (Contact[5].equals(phoneverify)) {
+                System.out.println("Phone Number or Person Already Exists, Try Adding a different Address");
+                phoneverify = null;
+                break;
+            }
+        }
 
+        if (phoneverify != null) {
+            phonenumber = phoneverify;
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(openedfile, true));
+            writer.append(firstname);writer.append(",");writer.append(lastname);
+            writer.append(",");writer.append(city);writer.append(",");
+            writer.append(state);writer.append(",");writer.append(zipcode);
+            writer.append(",");writer.append(phonenumber);writer.append("\n");
+            writer.close();
+            System.out.println("The user details are entered");
+
+        }
     }
+
+
 
     @Override
     public void editPerson(String phonen,File openedfile) throws IOException {
@@ -77,14 +97,8 @@ public class AddressBookImplementation extends Person implements AddressBookInte
             }else{
                 zipcode = ans;
             }
-            System.out.println("Edit phone number: Enter a new phone number or type 'S' to keep as it is");
-            ans=scanner.nextLine();
-            if (ans.equals("S")){
-                phonenumber=contactData[5];
-            }else{
-                phonenumber=ans;
-            }
-
+            phonenumber=contactData[5];
+            
             writer.append(firstname);writer.append(",");writer.append(lastname);writer.append(",");writer.append(city);
             writer.append(",");writer.append(state);writer.append(",");writer.append(zipcode);writer.append(",");
             writer.append(phonenumber);writer.append("\n");

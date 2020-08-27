@@ -47,22 +47,18 @@ public class Main {
                                     addressBookImplementation.addPerson(openedfile);
                                     break;
                                 case "2":
-                                    sc.nextLine();
                                     System.out.println("Enter the phone number to edit details");
                                     String phonen = sc.nextLine();
                                     addressBookImplementation.editPerson(phonen,openedfile);
                                     break;
                                 case "3":
-                                    sc.nextLine();
                                     System.out.println("Enter the phone number to delete person");
                                     String phon = sc.nextLine();
                                     addressBookImplementation.deletePerson(phon, openedfile);
                                     break;
                                 case "4":
-                                    sc.nextLine();
                                     System.out.println("Enter the phone");
                                     String phone = sc.nextLine();
-
                                     addressBookImplementation.searchPerson(phone, openedfile);
                                     break;
                                 case "5":
@@ -76,6 +72,7 @@ public class Main {
                                     break;
                                 case "8":
                                     i = 0;
+                                    break;
                                 default:
                                     System.out.println("Invalid Choice Enterd");
                                     break;
@@ -89,7 +86,7 @@ public class Main {
                     break;
                 case "4":
                     if (openedfile==null){
-                        System.out.println("You shoild open a AddressBook first");
+                        System.out.println("You should open a AddressBook first");
                     }else {
                         System.out.println("Enter new Name of file(Include .csv Extention after filename)");
                         String newname = f.nextLine();
