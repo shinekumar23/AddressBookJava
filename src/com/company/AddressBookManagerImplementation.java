@@ -25,14 +25,20 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
     //Note: showFiles(Change '/home/shine/IdeaProjects/AddressBookJava' this Directory where your project files are there
     @Override
     public void showFiles() {
-        File folder = new File("/home/shine/IdeaProjects/AddressBookJava");
-        File file[] = folder.listFiles();
-        System.out.println("List of CSV Files");
-        for (File print : Objects.requireNonNull(file)) {
-            String name = print.getName();
-            if (name.contains(".csv")) {
-                System.out.println(name);
+        try {
+            File folder = new File("/home/shine/IdeaProjects/AddressBookJava");
+            File file[] = folder.listFiles();
+            System.out.println("List of CSV Files");
+            for (File print : Objects.requireNonNull(file)) {
+                String name = print.getName();
+                if (name.contains(".csv")) {
+                    System.out.println(name);
+
+                }
             }
+
+        }catch (Exception e){
+            System.out.println("Note: Change pathname of showFiles() method in AddressBookManagerImplementation class");
         }
     }
 

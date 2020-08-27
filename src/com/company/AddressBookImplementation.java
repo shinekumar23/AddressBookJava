@@ -98,7 +98,7 @@ public class AddressBookImplementation extends Person implements AddressBookInte
                 zipcode = ans;
             }
             phonenumber=contactData[5];
-            
+
             writer.append(firstname);writer.append(",");writer.append(lastname);writer.append(",");writer.append(city);
             writer.append(",");writer.append(state);writer.append(",");writer.append(zipcode);writer.append(",");
             writer.append(phonenumber);writer.append("\n");
@@ -146,7 +146,7 @@ public class AddressBookImplementation extends Person implements AddressBookInte
         return templine;
 
     }
-
+    @Override
     public String searchPerson(String phone, File openedfile) throws FileNotFoundException {
         Scanner viewfile=new Scanner(openedfile);
         String templine="Contact not found";
