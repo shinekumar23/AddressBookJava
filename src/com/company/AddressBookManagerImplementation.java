@@ -50,7 +50,7 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
         if (check) {
             System.out.print("Address Book "+openfile + " is Opened \nSelect Option 2 for Updating and Sorting AddressBook\n");
         } else {
-            System.out.print("No such file exists !!!");
+            System.out.print("No such file exists !!!\n");
             file = null;
         }
         return file;

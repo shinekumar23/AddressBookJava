@@ -109,7 +109,7 @@ public class AddressBookImplementation extends Person implements AddressBookInte
 
     @Override
     public String deletePerson(String phon,File openedfile) throws IOException {
-        File tempFile = new File("TempFile.csv");
+        File tempFile = new File("tempFile.csv");
 
         BufferedReader reader = new BufferedReader(new FileReader(openedfile));
         BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));

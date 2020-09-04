@@ -7,10 +7,9 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        AddressBookManagerImplementation managerImplementation=new AddressBookManagerImplementation();
+        AddressBookManagerInterface addressBookManagerInterface=new AddressBookManagerImplementation();
         File openedfile=null;
-        AddressBookImplementation addressBookImplementation=new AddressBookImplementation();
-
+        AddressBookInterface addressBookInterface=new AddressBookImplementation();
 
         Scanner f=new Scanner(System.in);
         Scanner sc=new Scanner(System.in);
@@ -26,15 +25,15 @@ public class Main {
                 case "1":
                     System.out.println("Enter the name of Address Book(Without csv Extention)");
                     String filename = f.nextLine();
-                    managerImplementation.newAddressBook(filename);
+                    addressBookManagerInterface.newAddressBook(filename);
                     break;
                 case "2":
                     if (openedfile == null) {
-                        managerImplementation.showFiles();
+                        addressBookManagerInterface.showFiles();
                         Scanner add = new Scanner(System.in);
                         System.out.println("In Which csv file you like to add your Address(Type File name with extention)");
                         String openfile = add.nextLine();
-                        openedfile = managerImplementation.openAddressBook(openfile);
+                        openedfile = addressBookManagerInterface.openAddressBook(openfile);
                     }else{
                         int i=1;
                         while (i==1) {
@@ -44,31 +43,31 @@ public class Main {
                             String choiceNest = f.nextLine();
                             switch (choiceNest) {
                                 case "1":
-                                    addressBookImplementation.addPerson(openedfile);
+                                    addressBookInterface.addPerson(openedfile);
                                     break;
                                 case "2":
                                     System.out.println("Enter the phone number to edit details");
                                     String phonen = sc.nextLine();
-                                    addressBookImplementation.editPerson(phonen,openedfile);
+                                    addressBookInterface.editPerson(phonen,openedfile);
                                     break;
                                 case "3":
                                     System.out.println("Enter the phone number to delete person");
                                     String phon = sc.nextLine();
-                                    addressBookImplementation.deletePerson(phon, openedfile);
+                                    addressBookInterface.deletePerson(phon, openedfile);
                                     break;
                                 case "4":
                                     System.out.println("Enter the phone");
                                     String phone = sc.nextLine();
-                                    addressBookImplementation.searchPerson(phone, openedfile);
+                                    addressBookInterface.searchPerson(phone, openedfile);
                                     break;
                                 case "5":
-                                    addressBookImplementation.sortByZip(openedfile);
+                                    addressBookInterface.sortByZip(openedfile);
                                     break;
                                 case "6":
-                                    addressBookImplementation.sortByName(openedfile);
+                                    addressBookInterface.sortByName(openedfile);
                                     break;
                                 case "7":
-                                    addressBookImplementation.display(openedfile);
+                                    addressBookInterface.display(openedfile);
                                     break;
                                 case "8":
                                     i = 0;
@@ -82,7 +81,7 @@ public class Main {
 
                 break;
                 case "3":
-                    managerImplementation.showFiles();
+                    addressBookManagerInterface.showFiles();
                     break;
                 case "4":
                     if (openedfile==null){
@@ -90,7 +89,7 @@ public class Main {
                     }else {
                         System.out.println("Enter new Name of file(Include .csv Extention after filename)");
                         String newname = f.nextLine();
-                        managerImplementation.saveAsAddressBook(newname, openedfile);
+                        addressBookManagerInterface.saveAsAddressBook(newname, openedfile);
                     }
                     break;
                 case "5":
